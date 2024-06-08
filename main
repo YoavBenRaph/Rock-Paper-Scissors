@@ -1,0 +1,130 @@
+/*************************************************************
+* Author: Yoav Ben Raphael                                   *
+* Date: March 28 2022                                        *
+* Program Used: C++ in Repl.com                      	     *
+* Purpose: Rock Paper Scissors in C++ Repl                   *
+*                                                            *
+**************************************************************/
+
+// Bringing in libraries 
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <math.h>
+using namespace std; 
+
+
+int main() 
+{
+  // Making number more random
+  srand((int)time(0));
+
+  // Declaring variables
+  string comp = "default", player;
+  string rock("rock");
+  string scissors("scissors");
+  string paper("paper");
+  string quit;
+  
+  int num = 0;
+  int compWins = 0;
+  int playerWins = 0;
+  int done = 0;
+
+  do {
+    // Geting random number
+    num = rand() % 3 + 1;
+
+    // Getting Rock paper or scissor for computer 
+    if (num == 1)
+    {
+    comp = "rock";
+    }
+    else if (num == 2)
+    {
+      comp = "scissors";
+    }
+    else 
+    {
+      comp = "paper";
+    }
+
+    // Getting user input 
+    cout << "\nDo you want to choose rock paper or scissors? \nEnter your choice here ->  ";
+    cin >> player;
+
+    // Checking who won
+  
+    if (player == rock && comp == rock)
+    {
+        cout << "The computer chose: \033[1;33m" << comp << "\033[0m, while you chose: \033[1;33m" << player << "\033[0m";
+        cout << "\nIt's a tie";
+    }
+    else if (player == rock && comp == paper)
+    {
+        cout << "The computer chose: \033[1;32m" << comp << "\033[0m, while you chose: \033[1;31m" << player << "\033[0m";
+        cout << "\nThe computer won";
+        compWins ++;
+    }
+    else if (player == rock && comp == scissors)
+    {
+        cout << "The computer chose: \033[1;31m" << comp << "\033[0m, while you chose: \033[1;32m" << player << "\033[0m";
+        cout << "\nYou won";
+        playerWins ++;
+    }
+    else if (player == paper && comp == rock)
+    {
+        cout << "The computer chose: \033[1;31m" << comp << "\033[0m, while you chose: \033[1;32m" << player << "\033[0m";
+        cout << "\nYou won";
+        playerWins ++;
+      
+    }
+    else if (player == paper && comp == paper)
+    {
+        cout << "The computer chose: \033[1;33m" << comp << "\033[0m, while you chose: \033[1;33m" << player << "\033[0m";
+        cout << "\nit's a tie";
+  
+    }
+    else if (player == paper && comp == scissors)
+    {
+        cout << "The computer chose: \033[1;32m" << comp << "\033[0m, while you chose: \033[1;31m" << player << "\033[0m";
+        cout << "\nThe computer won";
+        compWins ++;
+  
+    }
+    else if (player == scissors && comp == rock)
+    {
+        cout << "The computer chose: \033[1;32m" << comp << "\033[0m, while you chose: \033[1;31m" << player << "\033[0m";
+        cout << "\nThe computer won";
+        compWins ++;
+    } 
+    else if (player == scissors && comp == paper)
+    {
+       cout << "The computer chose: \033[1;31m" << comp << "\033[0m, while you chose: \033[1;32m" << player << "\033[0m";
+       cout << "\nYou won";
+       playerWins ++;
+    }
+    else if (player == scissors && comp == scissors)
+    {
+        cout << "The computer chose: \033[1;33m" << comp << "\033[0m, while you chose: \033[1;33m" << player << "\033[0m";
+        cout << "\nIt'a tie";
+    }
+      
+    cout<<"\nDo you want to play again or quit? (enter 'quit' to stop, or any button to continue) -> ";
+    cin>>quit;
+
+      if (quit == "quit")
+      {
+        done=1;
+      }
+  }
+  while(done == 0);
+
+  // End of game messages
+   cout << "\n===========================";
+   cout << "\n= \033[1;32mYou won "<< playerWins << " time(s)\033[0m       =";
+   cout << "\n= \033[1;31mYou lost " << compWins << " time(s)\033[0m      =";
+   cout << "\n= \033[1;35mThank you for playing! \033[0m =";
+   cout << "\n\033[0m===========================";
+    
+  }
